@@ -15,7 +15,10 @@ public class HuffmanTree extends BinaryTree<HuffmanData> implements Comparable<H
 		HuffmanData newRoot = new HuffmanData(this.getData().getSymbol() + otherTree.getData().getSymbol(), this.getData().getOccurrences() + otherTree.getData().getOccurrences());
 		return new HuffmanTree(newRoot, this, otherTree);
 	}
-	
+	public boolean equals(Object other) {	//we messed up the hashcode hahahaha
+		HuffmanTree otherTree = (HuffmanTree) other;
+		return this.getData().getSymbol().equals(otherTree.getData().getSymbol());
+	}
 	public int compareTo(HuffmanTree otherTree) {
 		//this puts symbols with GREATER occurrences at the front of the PriorityQueue.
 	//	return otherTree.getData().getOccurrences() - this.getData().getOccurrences();
